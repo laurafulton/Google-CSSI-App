@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html >
+
+	<style type="text/css">
+	@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+	
+	.image {
+		position: relative;
+		/*width: {{image_width}}px;
+		height: {{image_height}}px;*/
+		display: block;
+		margin: 0 auto;
+		
+		
+	}
+	
+	h2 {
+		position: absolute;
+		bottom: -13.8px; /* image height-125 */
+		left: 0;
+		width: 100%; 
+	}
+	
+	
+	h2 span {
+		color: white;
+		font:  18px/50px 'Lato', Arial, sans-serif;
+		background: rgb(0, 0, 0);
+		background: rgba(0, 0, 0, 0.7);
+		padding: 8.5px;
+		text-align: center;
+	}
+	
+	.options{
+		width: 100%;/* image width  */
+		display: block;		
+	}
+	
+	.imageoptions{
+		max-width:100%;
+		height: auto;
+	}	
+	
+	</style>
+		
+		<div class="image">
+			<img class = "imageoptions" src={{image_filepath}} alt="Preview photo goes here"/>
+			<h2><span class="options"> {{message}} </span> </h2>
+		</div>
+
+</html>
