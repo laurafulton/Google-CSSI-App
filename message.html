@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Add a Message Pls</title> 
+  <link rel="stylesheet" type="text/css" href="/newstatic/stylesheets/redstyle.css" /> 
+  <script type="text/javascript" src="jquery-2.1.1.js"></script>
+ </head> 
+
+
+ <body> 
+  <div class="info"> 
+	  <form method=POST>
+
+  <!--The title of the page-->
+   <header> 
+    <h1 id="thumbnails">Choose a Message<span>Insert your own message or choose from our collection</span></h1> 
+   </header> 
+   
+  <!--The table of images/text-->
+   
+   <div class="table"> 
+    <div class="row"> 
+		{% for message in messages %}
+	    
+	        <div class="col-xs-6 col-md-3"> 
+
+	         <input type="radio" class="thumbnail btn btn-2 btn-2b" name="message" value="{{message}}" id="{{message}}"> 
+	   	     <label for="{{message}}"><span class="btn btn-2 btn-2b highlight btn-options" /> {{message}} </span></label> 
+
+	        </div>
+		{% endfor %}
+    
+    </div> 
+   </div>
+
+    <!--The box where the user inputs in his own message-->
+    <textarea type="text" class="bottomline" id="words" name="message" maxlength="140"> </textarea>
+    
+    <!--The next button-->
+    
+    <div class="next"><button class="btn btn-2 btn-2b" id="forward"> Next</button> </div>
+	<input name="key" value = "{{ templatekey }}" type="hidden">
+    </form>
+
+    <!--The back button-->
+    <form method=GET action="/photo">
+    <div class="back"><button class="btn btn-2 btn-2b"> Back</button> </div>
+	<input name="key" value = "{{ templatekey }}" type="hidden">
+    </form>
+
+    <!--The write button. No method or action required here. Only for visual-->
+    <div class="write"><button class="btn btn-2 btn-2b" id="write"> Write Message</button> </div>
+
+  </div>  
+ </body>
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+ <script type="text/javascript">
+
+        //Used by the textarea to make next button appear if the user has typed a message, next won't appear
+        //until there is some form text in the box
+        var oldVal = "";
+        $("textarea").on("keydown keyup paste", function() {
+        var currentVal = $(this).val();
+        
+        oldVal = currentVal;
+        if(currentVal===''){
+          $('button[id="forward"]').fadeOut(500).hide(); return
+        }
+        //action to be performed on textarea changed
+        $('button[id="forward"]').fadeIn(500).show();
+        });
+           
+
+        //Hide the next and write buttons at page load
+        $('button[id="forward"]').hide();
+        $('button[id="write"]').hide();
+
+        //If an message is selected from our list, then next/write buttons appear, textarea disappears
+        $('input[name="message"]').click( function() {
+          $('textarea').fadeOut(500).hide();
+          $('span[class="character-count"]').fadeOut(500).hide();
+          $('button[id="forward"]').fadeIn(500).show();
+          $('button[id="write"]').fadeIn(500).show();
+        });
+
+        //if the write button is clicked, then textarea/counter appears, next and write disappears
+        $('button[id="write"]').click(function(){
+          //$('button[class="thumbnail"]').style.opacity = 0.35;
+          $('textarea').fadeIn(500).show();
+          $('span[class="character-count"]').fadeIn(500).show();
+          $('button[id="forward"]').fadeOut(500).hide();
+          $('button[id="write"]').fadeOut(500).hide();
+		  $('.btn:checked').attr('checked', false);
+		  
+		  
+        });
+
+        //Keeps count of the amount of characters user has typed, auto displays to the user next to textarea
+        $("textarea[maxlength]").each(function() {
+        var $this = $(this);
+        var maxLength = parseInt($this.attr('maxlength'));
+        $this.attr('maxlength', null);
+    
+        var el = $("<span class=\"character-count\">" + maxLength + "</span>");
+        el.insertAfter($this);
+        el.css('font','Lato, sans-serif');
+        el.css('position', 'fixed');
+        el.css('bottom','22%');
+        el.css('left', '65%');
+    
+        $this.on('keyup', function() {
+            var cc = $this.val().length;
+            
+            el.text(maxLength - cc);
+            
+            if(maxLength < cc) {
+                el.css('color', 'red');
+            }
+            else {
+                el.css('color', null);
+            }
+          });
+        });
+
+        
+   </script>
+ 
+</html>
