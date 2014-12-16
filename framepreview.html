@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Check Pls</title> 
+  <link rel="stylesheet" type="text/css" href="/newstatic/stylesheets/emailstyle.css" /> 
+ </head> 
+
+
+ <body id="photo"> 
+  <div class="info"> 
+
+
+    <!--Title of the page-->
+   <header> 
+    <h1 id="thumbnails">Here is your ecard!<span>Thanks for using Kinetic!</span></h1> 
+   </header> 
+
+
+  
+   <!--These are the buttons on the page. They are b4 the main image b/c of formatting. DONT move from here-->
+   
+   <div class="preview butn butn-2 butn-2b"> {% include 'preview.html' %} </div>
+    
+  </div>  
+ </body>
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+ <script type="text/javascript">
+        
+        //Hide the next button at pageload                                           
+        $('button[id="forward"]').hide();
+		console.log("Hi")
+        //Shows next button if user has selected an option
+        $('input[name="love"]').click( function() {
+          $('button[id="hate"]').fadeOut(500).hide();
+          $('button[id="forward"]').fadeIn(500).show();
+        });
+		console.log($('input[id="love"]'))
+
+        
+   </script>
+ 
+</html>
+
+
+
+
+
