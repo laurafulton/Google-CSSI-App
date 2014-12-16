@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html >
+
+	<style type="text/css">
+
+		.from{
+			position: fixed;
+			bottom: 60%;
+			left: 50%
+
+		}
+		.from{
+			width: 300px;
+		}
+
+		.fromemail{
+			position: fixed;
+			bottom: 55%;
+			left: 50%;
+		}
+
+		.fromemail{
+			width: 300px;
+		}
+
+		.to{
+			position: fixed;
+			bottom: 50%;
+			left: 50%;
+		}
+
+		.to{
+			width: 300px;
+		}
+
+		.toemail{
+			position: fixed;
+			bottom: 45%;
+			left: 50%;
+		}
+
+		.toemail{
+			width: 300px;
+		}
+	</style>
+	<head>
+		
+		
+		<link rel="stylesheet" type="text/css" href="newstatic/stylesheets/demo.css" />
+		<link rel="stylesheet" type="text/css" href="newstatic/stylesheets/component.css" />
+		<script src="newstatic/js/modernizr.custom.js"></script>
+	</head>
+	<body>
+	<!--
+		<div class="container">
+			<!-- Top Navigation 
+			
+			<header class="codrops-header">
+				<h1>Almost Done!<span>Just a few more steps</span></h1>	
+			</header>
+			
+			
+			<section>
+				<form id="theForm" class="simform" autocomplete="off" method="POST" action="/final">
+					<div class="simform-inner">
+						<ol class="questions">
+							<li>
+								<span><label for="q1">What is your name?</label></span>
+								<input id="q1" name="q1" type="text"/>
+							</li>
+							<li>
+								<span><label for="q2">What is your email?</label></span>
+								<input id="q2" name="q2" type="text"/>
+							</li>
+							<li>
+								<span><label for="q3">Who would you like to send this to?</label></span>
+								<input id="q3" name="q3" type="text"/>
+							</li>
+							<li>
+								<span><label for="q4">What's their email?</label></span>
+								<input id="q4" name="q4" type="text"/>
+							</li>
+
+						</ol><!-- /questions 
+						<button class="submit" type="submit">Send answers</button>
+						<div class="controls">
+							<button class="next"></button>
+							<div class="progress"></div>
+							<span class="number">
+								<span class="number-current"></span>
+								<span class="number-total"></span>
+							</span>
+							<span class="error-message"></span>
+						</div><!-- / controls 
+					</div><!-- /simform-inner 
+					<span class="final-message"></span>
+				</form><!-- /simform			
+			</section>
+		</div><!-- /container 
+		<script src="newstatic/js/classie.js"></script>
+		
+	
+		<script src="newstatic/js/stepsForm.js"></script>
+		<script>
+			var theForm = document.getElementById( 'theForm' );
+
+			new stepsForm( theForm, {
+				onSubmit : function( form ) {
+					
+					console.log("submitted!!")
+					// hide form
+					classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+				
+					var messageEl = theForm.querySelector( '.final-message' );
+					messageEl.innerHTML = 'Thank you! Check email pls.';
+					classie.addClass( messageEl, 'show' );
+				}
+			} );
+		</script>-->
+
+
+    <form method="POST" action = "/final">
+		<input class="from" name="sender_name" placeholder="from" >
+		<input class="fromemail"name="sender_email" placeholder="what's your email?">
+		<input class="to"name="rec_name" placeholder="who are you sending it to?">
+		<input class="toemail"name="rec_email" placeholder="what's their email?">
+	    <div class="submit"><button class="btn btn-2 btn-2b" id="submit"> Submit</button> </div>
+		<input name="key" value = "{{ templatekey }}" type="hidden">
+	</form>
+
+	</body>
+</html>
