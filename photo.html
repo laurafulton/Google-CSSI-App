@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Add a Photo Pls</title> 
+  <link rel="stylesheet" type="text/css" href="/newstatic/stylesheets/bluestyle.css" /> 
+  <script type="text/javascript" src="jquery-2.1.1.js"></script>
+ </head> 
+
+
+ <body id="photo"> 
+  <div class="info"> 
+  <form method=POST>
+
+   <!--Title of the page-->
+   <header> 
+    <h1 id="thumbnails">Time for a Photo<span>Choose from our library</span></h1> 
+   </header> 
+
+
+   <!--The table of images/text-->
+   <div class="table"> 
+    <div class="row"> 
+    <!--To add more buttons just copy an entire div(col-xs-6) to the bottom. Total # of buttons must be multiple of 4 b/c formatting-->
+	
+	{% for photopath in photos %}
+	    
+        <div class="col-xs-6 col-md-3"> 
+         <input type="radio" class="thumbnail btn btn-2 btn-2b" name="image_filepath" value="{{photopath}}" id="{{photopath}}"> 
+   	     <label for="{{photopath}}"><img class="btn btn-2 btn-2b highlight btn-options" src="/newstatic/photos/{{occasion}}/{{photopath}}" alt="Generic placeholder 			thumbnail" /></label> 			  
+        </div>
+	{% endfor %}
+  <!--   <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <button class="thumbnail" name="image_filepath"> <img class="btn btn-2 btn-2b" src="/newstatic/holderImage.svg" alt="Generic placeholder thumbnail" /> </button> 
+     </div> -->
+    </div> 
+   </div>
+
+   <!--The next button-->
+    
+    <div class="next"><button class="btn btn-2 btn-2b" id="forward"> Next</button> </div>
+	<input name="key" value = "{{ templatekey }}" type="hidden">
+    </form>
+
+    <!--The back button-->
+    <form method=GET action="/main">
+    <div class="back"><button class="btn btn-2 btn-2b" id="back"> Back</button> </div>
+	<input name="key" value = "{{ templatekey }}" type="hidden">
+    </form>
+
+  </div>  
+ </body>
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+ <script type="text/javascript">
+
+        //hide next button at page load
+        $('button[id="forward"]').hide();
+
+        //Shows next button if user has selected an option
+        $('input[name="image_filepath"]').click( function() {
+          $('textarea').fadeOut(500).hide();
+          $('span[class="character-count"]').fadeOut(500).hide();
+          $('button[id="forward"]').fadeIn(500).show();
+          $('button[id="write"]').fadeIn(500).show();
+        });
+
+
+        
+        
+   </script>
+ 
+</html>
