@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Check Pls</title> 
+  <link rel="stylesheet" type="text/css" href="/newstatic/stylesheets/purplestyle.css" /> 
+ </head> 
+
+
+ <body id="photo"> 
+  <div class="info"> 
+   <form method=POST>
+
+    <!--Title of the page-->
+   <header> 
+    <h1 id="thumbnails">How does it look?<span>Almost done!</span></h1> 
+   </header> 
+
+
+  
+   <!--These are the buttons on the page. They are b4 the main image b/c of formatting. DONT move from here-->
+   
+   <div class="yes"><input type="radio" name="love" class="thumbnail btn btn-2 btn-2b" id="love"> 
+	     <label for="love"><span class="btn btn-2 btn-2b highlight" /> I love it! </span></label></div>
+   
+   <div class="next"><button class="btn btn-2 btn-2b" id="forward"> Next</button> </div>
+   <input name="key" value = "{{ templatekey }}" type="hidden">
+   </form>
+   <form method=GET action="/main">
+   <div class="no"><button class="btn btn-2 btn-2b" id="hate">I don't like it.</button> </div>
+   </form>
+   <form method=GET action="/message">
+   <div class="back"><button class="btn btn-2 btn-2b" id="back"> Back</button> </div>
+   <input name="key" value = "{{ templatekey }}" type="hidden">
+   </form>
+
+   <!--This is the center image, it has its own css. Btn was changed to Butn and so on. More info on css-->
+   <input type="radio" class="thumbnail butn butn-2 butn-2b" name="occasion" value="bir" id="bir-check">
+   <div class="preview butn butn-2 butn-2b"> {% include 'preview.html' %} </div>
+    
+  </div>  
+ </body>
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+ <script type="text/javascript">
+        
+        //Hide the next button at pageload                                           
+        $('button[id="forward"]').hide();
+		console.log("Hi")
+        //Shows next button if user has selected an option
+        $('input[name="love"]').click( function() {
+          $('button[id="hate"]').fadeOut(500).hide();
+          $('button[id="forward"]').fadeIn(500).show();
+        });
+		console.log($('input[id="love"]'))
+
+        
+   </script>
+ 
+</html>
