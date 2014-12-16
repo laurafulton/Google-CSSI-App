@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+ <!-- The user is asked to select an occasion. -->
+  <title>Occasion Pls</title> 
+  <link rel="stylesheet" type="text/css" href="/newstatic/stylesheets/greenstyle.css" /> 
+  <script type="text/javascript" src="jquery-2.1.1.js"></script>
+ </head> 
+
+<!-- The occassions are presented in a format that lists the title of the occasion along wiht a picture -->
+ <body id="photo"> 
+  <div class="info"> 
+	<form method=POST action="/">
+
+    <!--Title of the page-->
+   <header> 
+    <h1 id="thumbnails">Choose an Occasion<span>What are you looking for?</span></h1> 
+   </header> 
+
+
+   <!--The table of images/text-->
+   <div class="table"> 
+    <div class="row"> 
+    <!--To add more buttons just copy an entire div(col-xs-6) to the bottom. Total # of buttons must be multiple of 4 b/c formatting-->
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="bir" id="bir-check">
+	  <label for="bir-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Birthday </span></label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="bl" id="bl-check">
+	  <label for="bl-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Blank </span> </label>  
+     </div>
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="chr" id="chr-check">
+	  <label for="chr-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Christmas </span> </label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="cng" id="cng-check">
+	  <label for="cng-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Congratulations </span> </label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="gw" id="gw-check">
+	  <label for="gw-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Get Well </span> </label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="hwn" id="hwn-check">
+	  <label for="hwn-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Halloween </span></label>  
+     </div>
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="ny" id="ny-check">
+	  <label for="ny-check"><span class="btn btn-2 btn-2b highlight btn-options" /> New Year's </span> </label>  
+     </div>
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="ohol" id="ohol-check">
+	  <label for="ohol-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Other Holidays </span> </label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="pat" id="pat-check">
+	  <label for="pat-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Patriotic </span></label>  
+     </div>
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="ty" id="ty-check">
+	  <label for="ty-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Thank You </span> </label>  
+     </div> 
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="val" id="val-check">
+	  <label for="val-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Valentine's Day </span></label>  
+     </div>
+     <div class="col-xs-6 col-md-3"> 
+      <input type="radio" class="thumbnail btn btn-2 btn-2b" name="occasion" value="wed" id="wed-check">
+	  <label for="wed-check"><span class="btn btn-2 btn-2b highlight btn-options" /> Wedding </span> </label>  
+     </div>
+   </div>
+
+   <!--The next button-->
+    
+   <div class="next"><button class="btn btn-2 btn-2b" id="forward"> Next</button> </div>
+   </form>
+
+  </div>  
+ </body>
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+ <script type="text/javascript">
+        
+        //Hide the next button at pageload                                           
+        $('button[id="forward"]').hide();
+        //$('button[id="write"]').hide();
+
+        //Shows next button if user has selected an option
+		
+        $('input[name="occasion"]').click( function() {
+          $('textarea').fadeOut(500).hide();
+          $('span[class="character-count"]').fadeOut(500).hide();
+          $('button[id="forward"]').fadeIn(500).show();
+          $('button[id="write"]').fadeIn(500).show();
+        });
+
+        
+   </script>
+ 
+</html>
+
